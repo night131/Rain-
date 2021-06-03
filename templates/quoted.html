@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <center>
+        <h4>{{ data["location"]["time"] }}</h4><h3>{{ data["location"]["name"] }}</h3>
+        <h6>{{ data["location"]["region"] }} {{ data["location"]["country"] }}</h6>
+
+         <img src= {{ data["current"]["icon"] }} alt= {{ data["current"]["text"] }}>
+            <b>{{ data["current"]["temp_c"] }}°C
+            {{ data["current"]["text"] }}</b><br>
+        {% if hourlist%}
+            <h2 style="color:#0f538f;">Rain Chance</h2>
+            <table width="60%">
+            <tr>
+            <th>Local Time</th>
+            {% for entry in hourlist %}
+                {% for key,value in entry.items() %}
+                        <th>{{ key }}:00</th>
+                {% endfor %}
+            {% endfor %}
+            </tr>
+            <tr>
+            <th>Chance</th>
+            {% for entry in hourlist %}
+                {% for key,value in entry.items() %}
+                        <th style="color:#0f538f;">{{ value }}%</th>
+                {% endfor %}
+            {% endfor %}
+            </tr>
+            </table>
+            </center>
+        {% else %}
+            <h2 style="color:#dd8508;">No Rain Expected Today</h2>
+        {% endif %}
+    </div>
+{% endblock %}

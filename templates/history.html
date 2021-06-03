@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+    <div class="section">
+        <h2>Reminders</h2>
+        <center>
+        Current email: <b>{{ details.username }}</b>
+        Current phone number: <b>{{ details.phone_number }}</b> <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th><center>City Name</center></th>
+                    <th><center>Reminder Type</center></th>
+                    <th><center>Reminder Status</center></th>
+                    <th><center>Sent Status</center></th>
+                    <th><center>Reminder DateTime</center></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- TODO: Loop through the database entries to display them in this table -->
+                {% for reminder in reminders %}
+
+                <tr>
+                    <td><center>{{ reminder.cityname }}</center></td>
+                    <td><center>{{ reminder.type }}</center></td>
+                    {% if reminder.reminder_status == True %}
+                        <td style="color:green"><center>active</center></td>
+                    {% elif reminder.reminder_status == False %}
+                        <td style="color:#a11717"><center>inactive</center></td>
+                    {% endif %}
+                    {% if reminder.sent_status == True %}
+                        <td style="color:green"><center>active</center></td>
+                    {% elif reminder.sent_status == False %}
+                        <td style="color:#a11717"><center>inactive</center></td>
+                    {% endif %}
+                    <td><center>{{ reminder.datetime }}</center></td>
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+        </center>
+    </div>
+{% endblock %}

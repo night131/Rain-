@@ -1,0 +1,13 @@
+os
+re
+cs50
+email
+Flask
+flask_mail
+Flask-Session
+requests
+smtplib
+tempfile
+werkzeug
+vonage
+apscheduler

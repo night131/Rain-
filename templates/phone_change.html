@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h2>Set Phone Number</h2>
+    {% if phone_number %}
+        <h4>Default Phone Number: {{ phone_number }}</h4><br>
+    {% elif phone_number == None %}
+       <h4>No Default Phone Number Set</h4><br>
+    {% endif %}
+    <form action="/phone_change" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="phone_number" placeholder="Phone Number" type="number"><br>
+            <small>Format: All digits next to each other</small>
+        </div>
+        <button class="btn btn-primary" type="submit">Set your number</button>
+    </form>
+{% endblock %}
