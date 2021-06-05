@@ -38,6 +38,8 @@ Database name: weather.db
 
 Two tables in Databese:
 CREATE TABLE 'users' (id INTEGER, username TEXT NOT NULL, hash TEXT NOT NULL, 'main_city' text, 'phone_number' integer DEFAULT NULL, PRIMARY KEY(id))
+
+
 CREATE TABLE 'reminders' ('id' integer PRIMARY KEY NOT NULL, 'user_id' integer NOT NULL, 'type' text NOT NULL, 'reminder_status' boolean NOT NULL DEFAULT false, 'sent_status' boolean NOT NULL DEFAULT false,'datetime' datetime NOT NULL, 'date' date NOT NULL, 'time' time NOT NULL, 'cityname' text NOT NULL )
 
 #### Email Reminders:
